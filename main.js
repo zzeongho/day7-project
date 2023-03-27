@@ -83,6 +83,13 @@ function onClickRegist() {
 
 let isLoading = false;
 
+const searchInput = document.querySelector(".searchInput");
+searchInput.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
+    onClickSearch();
+  }
+});
+
 async function onClickSearch() {
   const searchInput = document.querySelector(".searchInput");
   const searchResult = document.querySelector(".searchResult");

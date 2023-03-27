@@ -79,8 +79,13 @@ main {
     animation: spin 1s linear;
   }
 }
+
+.searchInput {
+  width: 300px;
+}
 .searchResult {
   display: none;
+  color: white;
 }
 .nft {
   position: fixed;
