@@ -1,6 +1,15 @@
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 body {
   margin: 0;
-  color: rgb(22, 22, 22);
+  font-size: 40px;
 }
 
 .bgVideo {
@@ -22,36 +31,104 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
 
-  .time {
-    font-size: 20px;
-    border: 10px dotted pink;
-    padding: 12px 24px;
-    color: white;
-    border-radius: 10px;
-  }
+.time {
+  font-size: 20px;
+  border: 10px dotted pink;
+  padding: 12px 24px;
+  color: white;
+  border-radius: 10px;
+}
 
-  .quotes {
-    position: relative;
-    font-size: 60px;
-    padding: 20px;
+.quotes {
+  position: relative;
+  font-size: 60px;
+  padding: 20px;
+  color: white;
 
-    .quotesAddBtn {
-      display: none;
-      position: absolute;
-      top: 50%;
-      right: 50%;
-      transform: translate(50%, -50%);
-    }
-
-    &:hover {
-      .quotesAddBtn {
-        display: inline-block;
-      }
-    }
-  }
-
-  .newQuotes {
+  .quotesAddBtn {
     display: none;
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
   }
+
+  &:hover {
+    .quotesAddBtn {
+      display: inline-block;
+    }
+  }
+}
+
+.newQuotes {
+  display: none;
+}
+
+.searchTitle {
+  display: flex;
+}
+.search {
+  padding: 20px;
+  color: white;
+  .searchLogo {
+    width: 32px;
+    height: 32px;
+    margin: 10px;
+    animation: spin 1s linear;
+  }
+}
+.searchResult {
+  display: none;
+}
+.nft {
+  position: fixed;
+  top: 0;
+  right: 0;
+  margin: 24px;
+
+  img {
+    width: 256px;
+    height: 256px;
+  }
+
+  .nftHover {
+    position: absolute;
+    display: none;
+    width: 256px;
+    height: 256px;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+
+    a {
+      color: white;
+    }
+    button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      margin: -8px;
+      border-radius: 9999px;
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  &:hover {
+    .nftHover {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
+
+.nftView {
+  position: fixed;
+  top: 0;
+  right: 0;
+  margin: 24px;
+  display: none;
 }
