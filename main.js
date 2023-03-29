@@ -159,3 +159,13 @@ navigator.geolocation.getCurrentPosition(
   },
   () => alert("Not allowed")
 );
+
+function dogeClick() {
+  const dogeClick = document.querySelector(".dogeDollar");
+  const dogeGo2 = document.querySelector(".dogeGo2");
+  dogeGo2.style.display = "block";
+  dogeClick.style.display = "none";
+  setTimeout(() => {
+    dogeGo2.style.display = "none";
+  }, 4100);
+}
