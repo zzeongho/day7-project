@@ -6,6 +6,16 @@
     transform: rotate(360deg);
   }
 }
+@keyframes fadeInDownBig {
+  0% {
+    opacity: 0;
+    transform: translateY(-2000px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
 body {
   margin: 0;
@@ -34,18 +44,23 @@ main {
 }
 
 .time {
-  font-size: 20px;
-  border: 10px dotted pink;
-  padding: 12px 24px;
-  color: white;
+  display: inline-block;
+  font-size: 80px;
+  font-family: "Arial", sans-serif;
+  padding: 20px;
+  color: #fff;
+  text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.8);
+  box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.4);
   border-radius: 10px;
+  animation: fadeInDownBig 1s;
 }
 
 .quotes {
   position: relative;
   font-size: 60px;
   padding: 20px;
-  color: white;
+  color: gold;
+  font-weight: bolder;
 
   .quotesAddBtn {
     display: none;
@@ -65,7 +80,12 @@ main {
 .newQuotes {
   display: none;
 }
-
+.searchForm {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+}
 .searchTitle {
   display: flex;
 }
@@ -81,11 +101,34 @@ main {
 }
 
 .searchInput {
+  padding: 10px;
+  border: none;
+  border-radius: 5px 0 0 5px;
+  font-size: 16px;
   width: 300px;
 }
+
+.searchButton {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 0 5px 5px 0;
+  font-size: 16px;
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.searchButton:hover {
+  background-color: #0062cc;
+}
+
 .searchResult {
   display: none;
   color: white;
+  margin-top: 20px;
+  font-size: 24px;
+  text-align: center;
 }
 .nft {
   position: fixed;
@@ -136,4 +179,62 @@ main {
   right: 0;
   margin: 24px;
   display: none;
+}
+
+.weatherBox {
+  position: fixed;
+  top: 0px;
+  left: 30px;
+
+  .weatherTemp {
+    position: fixed;
+    top: 150px;
+    left: 30px;
+    color: white;
+  }
+}
+
+.chatText {
+  font-family: sans-serif;
+}
+
+.dogeGo {
+  width: 150px;
+  height: 150px;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  animation: move-up-right 5s linear;
+  display: none;
+}
+
+@keyframes move-up-right {
+  0% {
+    bottom: 0;
+    right: 0;
+  }
+  100% {
+    bottom: 100%;
+    right: 100%;
+  }
+}
+
+.dogeDollar {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 20px;
+  width: 540px;
+  height: 228px;
+  opacity: 0;
+  animation: fadeIn 2s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

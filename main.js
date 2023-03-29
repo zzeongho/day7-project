@@ -1,5 +1,5 @@
 const QUOTES = "quotes";
-
+const API_KEY = "640251bfa7fdd2d4b734c24065abd823";
 function getTime() {
   const time = document.querySelector(".time");
 
@@ -9,7 +9,6 @@ function getTime() {
   const minutes = String(newDate.getMinutes()).padStart(2, "0");
   const seconds = String(newDate.getSeconds()).padStart(2, "0");
 
-  // time.innerText = hours + ":" + minutes + ":" + seconds;
   time.innerText = `${hours}:${minutes}:${seconds}`;
 }
 
@@ -23,12 +22,7 @@ function getQuotes() {
   if (!savedQuotes) {
     localStorage.setItem(
       QUOTES,
-      JSON.stringify([
-        "열심히 살지맙시다.",
-        "그래도 열심히 살아야지.",
-        "열심히 살면 뭐해~",
-        "열심히 살면 반드시 빛이 온다.",
-      ])
+      JSON.stringify(["도지 = $1", "화성 가즈아~~", "Doge to the moon"])
     );
 
     savedQuotes = localStorage.getItem(QUOTES);
@@ -93,7 +87,13 @@ searchInput.addEventListener("keydown", (event) => {
 async function onClickSearch() {
   const searchInput = document.querySelector(".searchInput");
   const searchResult = document.querySelector(".searchResult");
-
+  const dogeGo = document.querySelector(".dogeGo");
+  const dogeDollar = document.querySelector(".dogeDollar");
+  dogeGo.style.display = "block";
+  setTimeout(() => {
+    dogeGo.style.display = "none";
+    dogeDollar.style.display = "block";
+  }, 4100);
   if (!searchInput.value) return;
   if (isLoading) return;
 
@@ -139,3 +139,23 @@ function onClickToggle(value) {
     nftView.style.display = "inline-block";
   }
 }
+
+const weatherIcon = document.querySelector(".weatherIcon");
+const weatherTemp = document.querySelector(".weatherTemp");
+navigator.geolocation.getCurrentPosition(
+  (position) => {
+    const lat = position.coords.latitude;
+    const lon = position.coords.longitude;
+    const url = `https://api.openweathermap.org/data/2.5/weather?lat=${37.54880214518}&lon=${126.83881786327252}&units=metric&appid=${API_KEY}`;
+
+    fetch(url)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        weatherTemp.innerText =
+          data.name + "," + parseInt(data.main.temp) + "'C";
+        weatherIcon.src = `moon.png`;
+      });
+  },
+  () => alert("Not allowed")
+);
